@@ -1,0 +1,57 @@
+[gd_scene format=4 uid="uid://qoqlqyifuqrc"]
+
+[ext_resource type="Script" uid="uid://5debcl6mbdih" path="res://player.gd" id="1_h2yge"]
+[ext_resource type="Texture2D" uid="uid://cdrn53satj6hb" path="res://assets/grass.png" id="2_h2yge"]
+[ext_resource type="Texture2D" uid="uid://p5f2tl0k6uqm" path="res://assets/background.png" id="3_1bvp3"]
+[ext_resource type="Texture2D" uid="uid://wighu2svqu16" path="res://assets/character.png" id="3_lquwl"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cefh6"]
+size = Vector2(60.714294, 147.78564)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1bvp3"]
+texture = ExtResource("2_h2yge")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, 16, -16, -16, 16, -16, 16, 16)
+1:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_cefh6"]
+tile_size = Vector2i(32, 32)
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_1bvp3")
+
+[node name="Node" type="Node" unique_id=278577917]
+
+[node name="Background" type="Sprite2D" parent="." unique_id=534918722]
+position = Vector2(579.49994, 325.50003)
+scale = Vector2(0.5146277, 0.43550536)
+texture = ExtResource("3_1bvp3")
+
+[node name="Player" type="CharacterBody2D" parent="." unique_id=985950013]
+script = ExtResource("1_h2yge")
+
+[node name="Sprite2D" type="Sprite2D" parent="Player" unique_id=422052172]
+position = Vector2(355.15625, 532.4583)
+scale = Vector2(0.27895826, 0.27895826)
+texture = ExtResource("3_lquwl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player" unique_id=2094845450]
+position = Vector2(354, 533.62)
+scale = Vector2(0.56, 0.56)
+shape = SubResource("RectangleShape2D_cefh6")
+
+[node name="Camera2D" type="Camera2D" parent="Player" unique_id=1917950426]
+position = Vector2(340, 555)
+zoom = Vector2(1.5, 1.5)
+limit_left = 0
+limit_top = 0
+limit_right = 1160
+limit_bottom = 650
+position_smoothing_enabled = true
+position_smoothing_speed = 4.0
+
+[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1171260611]
+tile_map_data = PackedByteArray("AAAAABIAAAAAAAAAAAABABIAAAAAAAAAAAACABIAAAAAAAAAAAADABIAAAAAAAAAAAAEABIAAAAAAAAAAAAFABIAAAAAAAAAAAAGABIAAAAAAAAAAAAHABIAAAAAAAAAAAAIABIAAAAAAAAAAAAJABIAAAAAAAAAAAAKABIAAAAAAAAAAAALABIAAAAAAAAAAAAMABIAAAAAAAAAAAANABIAAAAAAAAAAAAOABIAAAAAAAAAAAAPABIAAAAAAAAAAAAQABIAAAAAAAAAAAASAA8AAAAAAAAAAAATAA8AAAAAAAAAAAAUAA8AAAAAAAAAAAAVAA8AAAAAAAAAAAAWAA8AAAAAAAAAAAAXAA8AAAAAAAAAAAAYAA8AAAAAAAAAAAAOAAwAAAAAAAAAAAANAAwAAAAAAAAAAAAMAAwAAAAAAAAAAAALAAwAAAAAAAAAAAAKAAwAAAAAAAAAAAAJAAwAAAAAAAAAAAAcAAwAAAAAAAAAAAAdAAwAAAAAAAAAAAAeAAwAAAAAAAAAAAAfAAwAAAAAAAAAAAAgAAwAAAAAAAAAAAAAAAkAAAAAAAAAAAABAAkAAAAAAAAAAAACAAkAAAAAAAAAAAADAAkAAAAAAAAAAAAEAAkAAAAAAAAAAAAFAAkAAAAAAAAAAAAKAAYAAAAAAAAAAAALAAYAAAAAAAAAAAAMAAYAAAAAAAAAAAANAAYAAAAAAAAAAAARAAQAAAAAAAAAAAASAAQAAAAAAAAAAAATAAQAAAAAAAAAAAAUAAQAAAAAAAAAAAAVAAQAAAAAAAAAAAA=")
+tile_set = SubResource("TileSet_cefh6")
